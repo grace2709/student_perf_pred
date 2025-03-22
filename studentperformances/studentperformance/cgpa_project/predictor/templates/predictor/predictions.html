@@ -1,0 +1,67 @@
+{% load static %}
+<!-- predictions.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Predictions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: url('{% static 'thelab.jpg' %}');
+            font-family: 'Poppins', sans-serif;
+            color: #fff;
+        }
+        .container {
+            max-width: 800px;
+            margin-top: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        th, td {
+            color: #fff;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Your Predictions</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Predicted CGPA</th>
+                    <th>Predicted Performance</th>
+                    <th>Classification</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for prediction in predictions %}
+                <tr>
+                    <td>{{ prediction.predicted_cgpa }}</td>
+                    <td>{{ prediction.predicted_performance }}</td>
+                    <td>{{ prediction.classification }}</td>
+                    <td>{{ prediction.created_at }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
